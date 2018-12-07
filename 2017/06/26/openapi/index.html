@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            对于OpenApi的设计 | 
+        
+        黑白之院
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+        <link rel="dns-prefetch" href="https://changyan.sohu.com"/>
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="A Man Has No Name">
+    <meta name="description" content="Valar Morghulis">
+    <meta name="keywords" content="null,API">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="黑白之院">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://www.heyyezi.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="对于OpenApi的设计 | 黑白之院">
+    <meta property="og:description" content="Valar Morghulis">
+    <meta property="og:article:tag" content="API"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#他们的目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">他们的目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#他们的结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">他们的结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典结构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">经典结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mata数据"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Mata数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#URL配置"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">URL配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路由设置"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">路由设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数-Parmeters"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">参数 Parmeters</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#返回信息Responses"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">返回信息Responses</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Models模型的定义"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">Models模型的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#鉴权Auth"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">鉴权Auth</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Swagger是一个工具"><span class="post-toc-number">3.</span> <span class="post-toc-text">Swagger是一个工具</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                对于OpenApi的设计
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>A Man Has No Name</strong>
+        <span>6月 26, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACVUlEQVR42u3aQW7DMAwEwPz/0+0Dgji7oq04wehkpLXM0UEUKD7+fno88PDw8PDw8PDwbsZ7xOP5recZnv96/JVXc45iw8PDw9vCe7PVxqG8Cu54zuS5iA0PDw9vI+/VhruWBq57980MeHh4eF/CW9vE176Lh4eH93u8RznyJIGHh4d3N16yoSefzMsZecFiU60FDw8PL+atbd97nrfe7+Hh4eEFvLqlKU4G8wLECU1XeHh4eBfw8o04Dzo/lCfUJB48PDy8/bx2iiRtTA7ubYEYDw8P71O8NujkoJwUatcu4erEgIeHh3cBb36MXksJl7cO4OHh4W3hTYqt7TKtxTBKDHh4eHgDXntxlf9PXUQYLwQeHh7eHl67xZ98WRUXKYp38fDw8C7m5ZPmV2Jtafh4seqEhIeHh7eFNykuTK75r6Di4eHh7eHl4UYfGC9Be3DHw8PD+yxvct2Vz9MWLBabrvDw8PAu47VH2PZ43R7W2+SBh4eH9yneWsNTXj5oMXlseHh4eDt5kybUs8qyxaaf/IKHh4d3A17e/NTOkPyePOPh4eHdgbdWksgvw9YaDqK0hIeHh7ed1x5tT7jsLxsIRokBDw8Pb8xrR16uXXtrcsjGw8PD28Nb25TX0kO7WG0ZAg8PD28nr00Gxwmgvf4/ufyBh4eHt5E3CaJtvWobFIpkg4eHh/clvKQtIA93tHx4eHh4t+StlTPmV1/RsuLh4eFt5LVbfL6Jt60JeTECDw8P71O8dms+a9NPQm+vwfDw8PCu5v3ewMPDw8PDw8PDu8H4By8APtrZKuTgAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/API/">API</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=对于OpenApi的设计&url=https://www.heyyezi.com//2017/06/26/openapi/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=对于OpenApi的设计&url=https://www.heyyezi.com//2017/06/26/openapi/index.html&via=A Man Has No Name" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://www.heyyezi.com//2017/06/26/openapi/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://www.heyyezi.com//2017/06/26/openapi/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>是不是能够统一API的设计，建立一个契约，然后各自开发呢？</p>
+<blockquote>
+<p>一个开源的API定义</p>
+</blockquote>
+</blockquote>
+<h2 id="他们的目标"><a href="#他们的目标" class="headerlink" title="他们的目标"></a>他们的目标</h2><blockquote>
+<p>定义标准的、独立于语言的指向 REST API 的接口，使得服务能力无需访问源代码、文档，或是借助于网络流量检查，就可被人类和计算机发现并理解。通过对 OpenAPI 做适当定义后，消费者可使用最小数量的实现逻辑理解远程服务，并与远程服务交互。</p>
+</blockquote>
+<h2 id="他们的结构"><a href="#他们的结构" class="headerlink" title="他们的结构"></a>他们的结构</h2><p><img src="https://cdn.infoq.com/statics_s2_20170613-0338/resource/news/2017/01/openapi-3/en/resources/openapi-2-3.png" alt="对比"></p>
+<h3 id="经典结构"><a href="#经典结构" class="headerlink" title="经典结构"></a>经典结构</h3><p>创建一个测试的API <code>test_api.yml</code><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="attr">swagger:</span> <span class="string">"2.0"</span></div><div class="line"><span class="attr">info:</span></div><div class="line"><span class="attr">  title:</span> <span class="string">"测试API"</span></div><div class="line"><span class="attr">  description:</span> <span class="string">&gt;</span></div><div class="line">     这里是markdown 语法</div><div class="line">    *这是用来演示基础结构的数据*</div><div class="line">    `这是`第二条 等</div><div class="line"></div><div class="line"><span class="attr">  version:</span> <span class="number">1.0</span><span class="number">.0</span></div><div class="line"></div><div class="line"><span class="attr">host:</span> api.example.com</div><div class="line"><span class="attr">basePath:</span> /v1</div><div class="line"><span class="attr">schemes:</span></div><div class="line"><span class="bullet">  -</span> https</div><div class="line"><span class="bullet">  -</span> http</div><div class="line"></div><div class="line"><span class="attr">paths:</span></div><div class="line">  /users:</div><div class="line"><span class="attr">    get:</span></div><div class="line"><span class="attr">      summary:</span> 返回一个用户列表</div><div class="line"><span class="attr">      description:</span> 哈哈哈哈哈，看不懂</div><div class="line"><span class="attr">      produces:</span></div><div class="line"><span class="bullet">        -</span> application/json</div><div class="line"><span class="attr">      responses:</span></div><div class="line">        <span class="number">200</span>:</div><div class="line"><span class="attr">          description:</span> OK</div><div class="line">        <span class="number">404</span>:</div><div class="line"><span class="attr">          description:</span> 找不到呗</div></pre></td></tr></table></figure></p>
+<h3 id="Mata数据"><a href="#Mata数据" class="headerlink" title="Mata数据"></a>Mata数据</h3><ul>
+<li><code>swagger: &quot;2.0&quot;</code> , 固定的声明</li>
+<li><p><code>info</code>, 接口介绍，描述</p>
+<ul>
+<li><code>title</code>: 接口名称</li>
+<li><code>description</code>: 接口描述，可以使用markdown语法</li>
+<li><code>version</code>: 接口版本，</li>
+<li><code>contact</code>: 联系人<ul>
+<li><code>name</code>: 姓名</li>
+<li><code>url</code>: 网址</li>
+<li><code>email</code>: 邮箱<h3 id="URL配置"><a href="#URL配置" class="headerlink" title="URL配置"></a>URL配置</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>host: api.example.com</code>, 配置域名</p>
+</li>
+<li><code>basePath: /v1</code>, 配置路由</li>
+<li><code>schemes</code>:<ul>
+<li><code>https</code>, <code>http</code>, <code>ws</code>, 配置http，scheme，可以是数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由设置"><a href="#路由设置" class="headerlink" title="路由设置"></a>路由设置</h3><ul>
+<li><code>paths</code>:<ul>
+<li><code>/users</code>, <code>/actions</code> 等等<ul>
+<li><code>get</code>, <code>post</code>, <code>put</code>等 HTTP Methods<ul>
+<li><code>summary</code>: 对这个接口，这个method的一个总结</li>
+<li><code>description</code>: 描述</li>
+<li><code>produces</code>:<ul>
+<li><code>application/json</code>, <code>application/xml</code>等</li>
+</ul>
+</li>
+<li><code>responses:</code><br>200:<ul>
+<li><code>description: OK</code><h3 id="参数-Parmeters"><a href="#参数-Parmeters" class="headerlink" title="参数 Parmeters"></a>参数 Parmeters</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>{}</code> 可以设置参数:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="attr">paths:</span></div><div class="line">  /users/&#123;userId&#125;:</div><div class="line"><span class="attr">    get:</span></div><div class="line"><span class="attr">      summary:</span> 通过uid返回一个用户信息</div><div class="line"><span class="attr">      parameters:</span></div><div class="line"><span class="attr">        - in:</span> path</div><div class="line"><span class="attr">          name:</span> userId</div><div class="line"><span class="attr">          required:</span> <span class="literal">true</span></div><div class="line"><span class="attr">          type:</span> integer</div><div class="line"><span class="attr">          minimum:</span> <span class="number">1</span></div><div class="line"><span class="attr">          description:</span> 这个参数很吊</div><div class="line"><span class="attr">      responses:</span></div><div class="line">        <span class="number">200</span>:</div><div class="line"><span class="attr">          description:</span> OK</div></pre></td></tr></table></figure></p>
+<h3 id="返回信息Responses"><a href="#返回信息Responses" class="headerlink" title="返回信息Responses"></a>返回信息Responses</h3><p>你可以根据HTTP状态码，定义信息格式。比如 <code>200: ok</code>； <code>404: Not Found</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="attr">paths:</span></div><div class="line">  /users/&#123;userId&#125;:</div><div class="line"><span class="attr">    get:</span></div><div class="line"><span class="attr">      summary:</span> 返回</div><div class="line"><span class="attr">      parameters:</span></div><div class="line"><span class="attr">        - in:</span> path</div><div class="line"><span class="attr">          name:</span> userId</div><div class="line"><span class="attr">          required:</span> <span class="literal">true</span></div><div class="line"><span class="attr">          type:</span> integer</div><div class="line"><span class="attr">          minimum:</span> <span class="number">1</span></div><div class="line"><span class="attr">          description:</span> 哈哈哈</div><div class="line"><span class="attr">      responses:</span></div><div class="line">        <span class="number">200</span>:</div><div class="line"><span class="attr">          description:</span> 返回一个用户的类, 下面是描述类的结构</div><div class="line"><span class="attr">          schema:</span></div><div class="line"><span class="attr">            type:</span> object</div><div class="line"><span class="attr">            properties:</span></div><div class="line"><span class="attr">              id:</span></div><div class="line"><span class="attr">                type:</span> integer</div><div class="line"><span class="attr">                example:</span> <span class="number">4</span></div><div class="line"><span class="attr">              name:</span></div><div class="line"><span class="attr">                type:</span> string</div><div class="line"><span class="attr">                example:</span> 那谁</div><div class="line">        <span class="number">400</span>:</div><div class="line"><span class="attr">          description:</span> 呵呵</div><div class="line">        <span class="number">404</span>:</div><div class="line"><span class="attr">          description:</span> 哈哈哈</div><div class="line"><span class="attr">        default:</span></div><div class="line"><span class="attr">          description:</span> 哟哟哟哟哟</div></pre></td></tr></table></figure>
+<h3 id="Models模型的定义"><a href="#Models模型的定义" class="headerlink" title="Models模型的定义"></a>Models模型的定义</h3><p><code>$ref</code>: 可以定义一些类型，用来描述一些数据结构。</p>
+<p>比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;id&quot;: 4,</div><div class="line">    &quot;name&quot;: &quot;你大爷&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以定义为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">definitions:</div><div class="line">  User:</div><div class="line">    properties:</div><div class="line">      id:</div><div class="line">        type: integer</div><div class="line">      name:</div><div class="line">        type: string</div><div class="line">    required:</div><div class="line">      - id</div><div class="line">      - name:</div></pre></td></tr></table></figure>
+<p>然后，引用:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="attr">paths:</span></div><div class="line">  /users/&#123;userId&#125;:</div><div class="line"><span class="attr">    get:</span></div><div class="line"><span class="attr">      summary:</span> Returns a user by ID.</div><div class="line"><span class="attr">      parameters:</span></div><div class="line"><span class="attr">        - in:</span> path</div><div class="line"><span class="attr">          name:</span> userId</div><div class="line"><span class="attr">          required:</span> <span class="literal">true</span></div><div class="line"><span class="attr">          type:</span> integer</div><div class="line"><span class="attr">      responses:</span></div><div class="line">        <span class="number">200</span>:</div><div class="line"><span class="attr">          description:</span> OK</div><div class="line"><span class="attr">          schema:</span></div><div class="line">            $ref: <span class="string">'#/definitions/User'</span></div></pre></td></tr></table></figure>
+<h3 id="鉴权Auth"><a href="#鉴权Auth" class="headerlink" title="鉴权Auth"></a>鉴权Auth</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">securityDefinitions:</div><div class="line">  BasicAuth:</div><div class="line">    type: basic</div><div class="line"></div><div class="line">security:</div><div class="line">  - BaseicAuth: []</div></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>query 参数，比如 <code>/users?role={admin}</code></li>
+<li>path 参数，比如 <code>/users/{id}</code></li>
+<li>header 参数，比如 <code>X-MyHeader: {Value}</code></li>
+<li>form 参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GET /pets/findByStatus?status=available</div><div class="line">GET /notes?offset=100&amp;limit=50</div></pre></td></tr></table></figure>
+<p>使用<code>in: query</code> 来定义query</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parameters:</div><div class="line">   - in: query</div><div class="line">     name: offset</div><div class="line">     type: integer</div><div class="line">     description: 返回数据的位移.</div><div class="line">   - in: query</div><div class="line">     name: limit</div><div class="line">     type: integer</div><div class="line">     description: 返回多少条数据.</div></pre></td></tr></table></figure>
+<hr>
+<p>Header Parameters</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">GET /ping HTTP/1.1</div><div class="line">Host: example.com</div><div class="line">X-Request-ID: 77e1c83b-7bb0-437b-bc50-a7a58e5660ac</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">paths:</div><div class="line">  /ping:</div><div class="line">    get:</div><div class="line">      summary: 检查服务是否存活.</div><div class="line">      parameters:</div><div class="line">        - in: header</div><div class="line">          name: X-Request-ID</div><div class="line">          type: string</div><div class="line">          required: true</div></pre></td></tr></table></figure>
+<h2 id="Swagger是一个工具"><a href="#Swagger是一个工具" class="headerlink" title="Swagger是一个工具"></a>Swagger是一个工具</h2><p>我们可以使用他来解析配置，设计我们的API.</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2017/06/26/openapi/"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'undefined';
+var conf = 'undefined';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/25/php/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/08/sign/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="A Man Has No Name's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        hi@heyyezi.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="/links/" target="_blank" title="一群疯子">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        一群疯子
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/API/">API<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/GIT/">GIT<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git/">Git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JS/">JS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/Tools/">Tools<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJS/">NodeJS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/PHP/">PHP<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/">coding<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/NodeJS/">NodeJS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">card_giftcard</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">13</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;黑白之院
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <!-- 畅言公共 js 代码 start -->
+		<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=undefined">
+</script>
+    <!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

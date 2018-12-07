@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            关于重新签名 | 
+        
+        黑白之院
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+        <link rel="dns-prefetch" href="https://changyan.sohu.com"/>
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="A Man Has No Name">
+    <meta name="description" content="Valar Morghulis">
+    <meta name="keywords" content="null,NodeJS">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="黑白之院">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://www.heyyezi.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="关于重新签名 | 黑白之院">
+    <meta property="og:description" content="Valar Morghulis">
+    <meta property="og:article:tag" content="NodeJS"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IOS签名"><span class="post-toc-number">1.</span> <span class="post-toc-text">IOS签名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#证书和密钥"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">证书和密钥</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#p12是什么"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">p12是什么</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#security命令是什么"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">security命令是什么</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#签名工具-codesign"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">签名工具 codesign</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Entitlements-和-Provisioning"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Entitlements 和 Provisioning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#沙盒"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">沙盒</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#授权机制"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">授权机制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Provisioning-配置文件"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Provisioning 配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#签名步骤"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">签名步骤:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#苹果的-Info-plist"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">苹果的 Info.plist</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建keychain"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">创建keychain</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                关于重新签名
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>A Man Has No Name</strong>
+        <span>6月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACdElEQVR42u3aQXIcIRBFQd3/0vYFPKNXQOORInulUKCmkwWFPvX151c/X3h4eHh4eHh4eB/G+8rPP16Ux/cx+9+Gh4eHd4f3zVa7MXEBv5pr8dvw8PDwLvJefdCrMeWD3lM7b/AGPDw8vI/krY0vxWbn2/Dw8PB+Lq+Uk15U8PDw8D6ZV/7h72HBNNgtxePxrAUPDw8v83oIe//nq/d7eHh4eIE3bmkaFobytjLyUk8ZHh4eXuD1jfhUhDE9svcmMDw8PLz7vLWYoFxllYUojVkH2lXx8PDwjvJ2WqnKcbkv1laZwcPDw3uY1ycu5WRnadYO7nh4eHj3eWX6Hkz0N59tMsDDw8O7z+uMaaNVX5S+cN8sFh4eHt7DvB6b9uurteuuaRjxsiDh4eHhPcxba1SdxrJlxl6ExmEEHh4e3mO8UxdXa5i14jT4jwEPDw/vKK8cf08FBzvB8YGeMjw8PLxt3s70ZSvfOTT3wz0eHh7efd5a5Pp+TD9wvx8/bmXAw8PDe5jXr5pKw1O62t8II9KS4eHh4V3kTSeebvrlAD2NPPDw8PD+F698VikhfeHKXy0e8fHw8PCu86ZBQ9/o16LhcSsYHh4e3kVe2aYH0/TgdSO0HRQGPDw8vEO86bMf8k5j2WmJwsPDw3uat3g9XzboHMJOw45B0xUeHh7eY7y1YtB/07f43sB6IGvBw8PDO5Rz9jasndBheuVWYHh4eHifzOtbfG8pKKFwej8eHh7ex/PWSsLapdeB+z08PDy8o7xpINuD2rXLs7XLNjw8PLw7vOnW3K/Epu8chA49jMDDw8M7yvt9Dx4eHh4eHh4e3gc8fwEwKoaSjq55ywAAAABJRU5ErkJggg==">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/NodeJS/">NodeJS</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=关于重新签名&url=https://www.heyyezi.com//2017/06/08/sign/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=关于重新签名&url=https://www.heyyezi.com//2017/06/08/sign/index.html&via=A Man Has No Name" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://www.heyyezi.com//2017/06/08/sign/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://www.heyyezi.com//2017/06/08/sign/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="IOS签名"><a href="#IOS签名" class="headerlink" title="IOS签名"></a>IOS签名</h2><h3 id="证书和密钥"><a href="#证书和密钥" class="headerlink" title="证书和密钥"></a>证书和密钥</h3><blockquote>
+<blockquote>
+<p>苹果的证书都是由苹果签发的，一般都会带有一个有效期。</p>
+</blockquote>
+</blockquote>
+<h4 id="p12是什么"><a href="#p12是什么" class="headerlink" title="p12是什么"></a>p12是什么</h4><p>查找自己拥有的证书以及私钥</p>
+<ul>
+<li>打开Mac种的 <code>钥匙串</code></li>
+</ul>
+<p><img src="https://objccn.io/images/issues/issue-17/iphone-developer-keychain.png" alt="查找自己的证书"></p>
+<ul>
+<li>全选，然后右键导出，这时候，需要你输入密码，最后，你就可以到处一个<code>XX.p12</code>的证书文件</li>
+</ul>
+<h4 id="security命令是什么"><a href="#security命令是什么" class="headerlink" title="security命令是什么"></a>security命令是什么</h4><p> 这个命令，可以查找显示系统中用来签名认证的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ security find-identity -v -p codesigning</div><div class="line">   1) 01C8E9712E9632E6D84EC533827B4478938A3B15 &quot;iPhone Developer: Thomas Kollbach (7TPNXN7G6K)&quot;</div></pre></td></tr></table></figure>
+<p> 对于IOs开发者来说，一般会涉及到两个证书，前缀含有</p>
+<ul>
+<li>iPhone Developer, 可以使设备在你的测试设备上运行。</li>
+<li>iPhone Distribution，提交APP Store时使用。</li>
+</ul>
+<p>在<code>钥匙串</code> 中打开其中一个证书，在最后下面一条中有标记 <code>Apple Developer Certificate (Submission)</code>, 或者 <code>Apple Developer Certificate (Development)</code>, IOS系统会通过这些判断，你到底运行在哪一个模式中。用来判断运行规则。</p>
+<p>我们签名时候，需要用到<code>私钥</code>(于<code>公钥</code>成对)。</p>
+<h4 id="签名工具-codesign"><a href="#签名工具-codesign" class="headerlink" title="签名工具 codesign"></a>签名工具 codesign</h4><p><strong>codesign</strong> 对APP进行重新签名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ codesign -fs  &quot;iPhone Developer: Thomas Kollbach (7TPNXN7G6K)&quot; --no-strict XXX.app</div></pre></td></tr></table></figure>
+<p><strong>codesign</strong> 也可以查看文件签名状态信息，用来定位错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$ codesign -vvv -d X.app</div><div class="line"></div><div class="line">Executable=/Users/toto/Library/Developer/Xcode/DerivedData/Example-cfsbhbvmswdivqhekxfykvkpngkg/Build/Products/Debug-iphoneos/Example.app/Example</div><div class="line">Identifier=ch.kollba.example</div><div class="line"></div><div class="line"></div><div class="line">### 支持的格式，比如arm64</div><div class="line">Format=bundle with Mach-O thin (arm64)</div><div class="line">CodeDirectory v=20200 size=26663 flags=0x0(none) hashes=1324+5 location=embedded</div><div class="line">Signature size=4336</div><div class="line"></div><div class="line">### 注意这一行，它表示签名证书</div><div class="line">Authority=iPhone Developer: Thomas Kollbach (7TPNXN7G6K)</div><div class="line">### 被谁设置了签名</div><div class="line">Authority=Apple Worldwide Developer Relations Certification Authority</div><div class="line">### 上面那个证书的 根证书</div><div class="line">Authority=Apple Root CA</div><div class="line"></div><div class="line">Signed Time=29.09.2014 22:29:07</div><div class="line">Info.plist entries=33</div><div class="line">TeamIdentifier=DZM8538E3E</div><div class="line">Sealed Resources version=2 rules=4 files=120</div><div class="line">Internal requirements count=1 size=184</div></pre></td></tr></table></figure>
+<p><strong>codesign</strong> 验证签名是否完善</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 如果验证失败，那么就会输出stderr哦</div><div class="line"></div><div class="line">$ codesign --verify XX.app</div></pre></td></tr></table></figure>
+<h3 id="Entitlements-和-Provisioning"><a href="#Entitlements-和-Provisioning" class="headerlink" title="Entitlements 和 Provisioning"></a>Entitlements 和 Provisioning</h3><h4 id="沙盒"><a href="#沙盒" class="headerlink" title="沙盒"></a>沙盒</h4><p>  IOS中，无论用户和开发者不能允许改变应用的开启策略，也就是你必须有对应的发布证书才能在IOS上运行。</p>
+<p>  你的应用可以做的事情，是受到<code>沙盒</code> 管理的。而，代码<code>沙盒</code> 和 <code>签名</code>机制是不同的。</p>
+<p>  代码签名，保证APP内容完整，没有被篡改。<br>  沙盒，限制APP能访问哪些资源。听说，沙盒的授权机制是开发中，经常出问题的。</p>
+<h4 id="授权机制"><a href="#授权机制" class="headerlink" title="授权机制"></a>授权机制</h4><p>查看授权信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ codesign -d --entitlements -  XX.app</div></pre></td></tr></table></figure>
+<h4 id="Provisioning-配置文件"><a href="#Provisioning-配置文件" class="headerlink" title="Provisioning 配置文件"></a>Provisioning 配置文件</h4><p>用来联系，代码签名，沙盒机制。</p>
+<p>这个配置文件是一个使用<a href="http://tools.ietf.org/html/rfc3852" target="_blank" rel="external">CMS</a>(Cryptographic Message Syntax)的一个加密文件。</p>
+<p>于是，你一旦从品过开发者中心得到这个文件，那么这个文件，你是不能改的。<strong>注意，这个签名，和我们对应用的签名是不一样的</strong> 。</p>
+<p><strong>security</strong> 可以用来查看配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ security cms -D -i embedded.mobileprovision</div></pre></td></tr></table></figure>
+<ol>
+<li>配置文件中的内容，用语判断一个APP是否可以运行在某个设备上，每一个配置文件都有自己的UUID，</li>
+<li>DeveloperCertificates, 这时一个列表。包含了，可以使用这个配置文件的应用红的签名的所有证书。那么，如果你的签名证书不在列表中，那么这个应用就不能运行。</li>
+<li>所有的证书都是基于 Base64的<a href="http://tools.ietf.org/html/rfc1848" target="_blank" rel="external">PEM</a>格式。</li>
+<li><p>如果需要查看证书内容，那么就需要把内容复制出来，然后改名成<strong>a.pem</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl x509 -text -in a.pem</div></pre></td></tr></table></figure>
+</li>
+<li><p>在这个文件中，<strong>Entitlements</strong>, 也包含了授权信息。</p>
+</li>
+<li>如果，你的开发证书，那么，你会看到一项 <strong>ProvisionedDevices</strong>，这里面又所有用语测试的设备列表。因为配置文件需要被苹果，签名。所以，每次需要重新下载。</li>
+</ol>
+<h3 id="签名步骤"><a href="#签名步骤" class="headerlink" title="签名步骤:"></a>签名步骤:</h3><ol>
+<li><code>rm -r ./Payload/xxxx.app/_CodeSignature/*</code></li>
+<li><code>cp /data/work/keychains/profile/13b42794011c.mobileprovision ./Payload/xxxx.app/embedded.mobileprovision</code></li>
+<li><code>/usr/bin/codesign -f -s &quot;iPhone Distribution: XXXXX.&quot; --entitlements /data/work/keychains/keychain/xxxx.demo_entitlements.plist ./Payload/xxxx.app</code></li>
+<li>搞定</li>
+</ol>
+<h3 id="苹果的-Info-plist"><a href="#苹果的-Info-plist" class="headerlink" title="苹果的 Info.plist"></a>苹果的 Info.plist</h3><p>苹果的Plist有两种格式，一种是XML格式，还有一种是 二进制格式(bplist, Binary Plist)。</p>
+<p>一般来讲,文件头:</p>
+<table>
+<thead>
+<tr>
+<th>文件头</th>
+<th>对象表</th>
+<th>偏移表</th>
+<th>文件尾</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开头8字节</td>
+<td>8~K字节</td>
+<td>K+L*N字节</td>
+<td>最后32字节</td>
+</tr>
+</tbody>
+</table>
+<p>固定文件都是:</p>
+<p>格式: 6 ， 定值:<code>62 70 6C 69 73 74</code> 表示: <code>bplist</code><br>版本: 2 ，定值: <code>30 30</code> 表示:<code>00</code></p>
+<p>所以固定是: <code>62 70 6C 69 73 74 30 30</code></p>
+<h3 id="创建keychain"><a href="#创建keychain" class="headerlink" title="创建keychain"></a>创建keychain</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">security create-keychain -p mysecretpassword build.keychain</div></pre></td></tr></table></figure>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2017/06/08/sign/"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'undefined';
+var conf = 'undefined';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/06/26/openapi/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/26/Electron2/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="A Man Has No Name's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        hi@heyyezi.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="/links/" target="_blank" title="一群疯子">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        一群疯子
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/API/">API<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/GIT/">GIT<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git/">Git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JS/">JS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/Tools/">Tools<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJS/">NodeJS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/PHP/">PHP<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/">coding<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/NodeJS/">NodeJS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/coding/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">card_giftcard</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">13</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;黑白之院
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <!-- 畅言公共 js 代码 start -->
+		<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=undefined">
+</script>
+    <!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
